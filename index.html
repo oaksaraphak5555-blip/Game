@@ -573,9 +573,9 @@ setInterval(updateCounter,1000);
 
 function boom(){
   const colors=['#ff6b9d','#ff9ec4','#c77dff','#ffb5a7','#ffdd44','#ff4d6d','#c9184a'];
-  const shapes=['💕','🥬','','🤍','🎊','💖','っ🥬っ'];
+  const shapes=['💕','🥬','🤍','🎊','💖','✨'];
 
-  // confetti
+  // confetti เดิม
   for(let i=0;i<80;i++){
     setTimeout(()=>{
       const el = document.createElement('div');
@@ -601,15 +601,47 @@ function boom(){
     }, Math.random()*800);
   }
 
-  // sticker popup
+  // ===== STICKER เด้งขึ้น =====
   const sticker = document.getElementById('stickerPopup');
 
+  // รี animation ทุกครั้ง
   sticker.classList.remove('show');
+  void sticker.offsetWidth;
 
+  sticker.classList.add('show');
+
+  // ===== แตกตัวเล็ก =====
   setTimeout(()=>{
-    sticker.classList.add('show');
-  },10);
-  }
+    for(let i=0;i<20;i++){
+      const mini = document.createElement('div');
+
+      mini.textContent = ['💕','🥬','💖','✨'][
+        Math.floor(Math.random()*4)
+      ];
+
+      mini.style.position = 'fixed';
+      mini.style.left = '50%';
+      mini.style.top = '50%';
+      mini.style.zIndex = '9999';
+      mini.style.fontSize = '2rem';
+      mini.style.pointerEvents = 'none';
+      mini.style.transition = '1s ease';
+
+      document.body.appendChild(mini);
+
+      const x = (Math.random()-0.5)*400;
+      const y = (Math.random()-0.5)*400;
+
+      requestAnimationFrame(()=>{
+        mini.style.transform =
+          `translate(${x}px, ${y}px) scale(.3)`;
+        mini.style.opacity = '0';
+      });
+
+      setTimeout(()=>mini.remove(),1000);
+    }
+  },500);
+}
 </script>
   <div id="stickerPopup" class="sticker-popup">🥬💖</div>
 </body>
