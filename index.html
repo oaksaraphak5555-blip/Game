@@ -571,25 +571,45 @@ function updateCounter(){
 updateCounter();
 setInterval(updateCounter,1000);
 
-// ── CONFETTI BOOM ──
 function boom(){
   const colors=['#ff6b9d','#ff9ec4','#c77dff','#ffb5a7','#ffdd44','#ff4d6d','#c9184a'];
   const shapes=['💕','🥬','','🤍','🎊','💖','っ🥬っ'];
+
+  // confetti
   for(let i=0;i<80;i++){
     setTimeout(()=>{
       const el = document.createElement('div');
       el.className = 'confetti-piece';
-      el.textContent = Math.random()>.5 ? shapes[Math.floor(Math.random()*shapes.length)] : '●';
-      if(el.textContent==='●') el.style.color = colors[Math.floor(Math.random()*colors.length)];
+
+      el.textContent =
+        Math.random()>.5
+        ? shapes[Math.floor(Math.random()*shapes.length)]
+        : '●';
+
+      if(el.textContent==='●'){
+        el.style.color =
+          colors[Math.floor(Math.random()*colors.length)];
+      }
+
       el.style.left = Math.random()*100+'vw';
       el.style.top = '-20px';
       el.style.fontSize = (.8+Math.random()*1.2)+'rem';
       el.style.animationDuration = (2+Math.random()*3)+'s';
+
       document.body.appendChild(el);
       setTimeout(()=>el.remove(),5000);
     }, Math.random()*800);
   }
-}
+
+  // sticker popup
+  const sticker = document.getElementById('stickerPopup');
+
+  sticker.classList.remove('show');
+
+  setTimeout(()=>{
+    sticker.classList.add('show');
+  },10);
+  }
 </script>
   <div id="stickerPopup" class="sticker-popup">🥬💖</div>
 </body>
