@@ -428,19 +428,19 @@ section { padding: 4rem 1.5rem; max-width: 480px; margin: 0 auto; }
       <div class="counter-title">เราอยู่ด้วยกันมาแล้ว...</div>
       <div class="counter-grid">
         <div class="counter-item">
-          <div class="counter-num" id="cDays">_</div>
+          <div class="counter-num" id="cDays">730</div>
           <div class="counter-label">วัน</div>
         </div>
         <div class="counter-item">
-          <div class="counter-num" id="cHours">_</div>
+          <div class="counter-num" id="cHours">--</div>
           <div class="counter-label">ชั่วโมง</div>
         </div>
         <div class="counter-item">
-          <div class="counter-num" id="cMins">_</div>
+          <div class="counter-num" id="cMins">--</div>
           <div class="counter-label">นาที</div>
         </div>
         <div class="counter-item">
-          <div class="counter-num" id="cSecs">_</div>
+          <div class="counter-num" id="cSecs">--</div>
           <div class="counter-label">วินาที</div>
         </div>
       </div>
@@ -502,8 +502,6 @@ function openEnvelope(){
   }, 900);
 }
 
-<script>
-
 // ── SCROLL REVEAL ──
 const obs = new IntersectionObserver(entries=>{
   entries.forEach((e,i)=>{
@@ -512,77 +510,41 @@ const obs = new IntersectionObserver(entries=>{
     }
   });
 },{threshold:.15});
-
-document.querySelectorAll('.tl-item,.reason-card')
-.forEach(el=>obs.observe(el));
-
+document.querySelectorAll('.tl-item,.reason-card').forEach(el=>obs.observe(el));
 
 // ── LIVE COUNTER ──
-// เปิดเว็บมา = 730 วันทันที และนับต่อจริงทุกวินาที
-
-const START_DAYS = 730;
-const counterStartTime = Date.now();
-
-function updateCounter() {
-  try {
-    const elapsed = Date.now() - counterStartTime;
-
-    const extraDays = Math.floor(elapsed / 86400000);
-    const hours = Math.floor((elapsed % 86400000) / 3600000);
-    const mins = Math.floor((elapsed % 3600000) / 60000);
-    const secs = Math.floor((elapsed % 60000) / 1000);
-
-    const totalDays = START_DAYS + extraDays;
-
-    document.getElementById('cDays').textContent =
-      totalDays.toLocaleString();
-
-    document.getElementById('cHours').textContent =
-      String(hours).padStart(2, '0');
-
-    document.getElementById('cMins').textContent =
-      String(mins).padStart(2, '0');
-
-    document.getElementById('cSecs').textContent =
-      String(secs).padStart(2, '0');
-
-  } catch (err) {
-    console.error('Counter Error:', err);
-  }
+// แก้วันที่ตรงนี้ให้ตรงกับวันเริ่มคบกัน
+const START = new Date('2023-05-26T00:00:00');
+function updateCounter(){
+  const now = new Date();
+  const diff = now - START;
+  const days = Math.floor(diff/86400000);
+  const hours = Math.floor((diff%86400000)/3600000);
+  const mins = Math.floor((diff%3600000)/60000);
+  const secs = Math.floor((diff%60000)/1000);
+  document.getElementById('cDays').textContent = days.toLocaleString();
+  document.getElementById('cHours').textContent = String(hours).padStart(2,'0');
+  document.getElementById('cMins').textContent = String(mins).padStart(2,'0');
+  document.getElementById('cSecs').textContent = String(secs).padStart(2,'0');
 }
-
 updateCounter();
-setInterval(updateCounter, 1000);
-
+setInterval(updateCounter,1000);
 
 // ── CONFETTI BOOM ──
 function boom(){
   const colors=['#ff6b9d','#ff9ec4','#c77dff','#ffb5a7','#ffdd44','#ff4d6d','#c9184a'];
   const shapes=['💕','🥬','','🤍','🎊','💖','っ🥬っ'];
-
   for(let i=0;i<80;i++){
     setTimeout(()=>{
       const el = document.createElement('div');
       el.className = 'confetti-piece';
-
-      el.textContent =
-        Math.random()>.5
-        ? shapes[Math.floor(Math.random()*shapes.length)]
-        : '●';
-
-      if(el.textContent==='●'){
-        el.style.color =
-          colors[Math.floor(Math.random()*colors.length)];
-      }
-
+      el.textContent = Math.random()>.5 ? shapes[Math.floor(Math.random()*shapes.length)] : '●';
+      if(el.textContent==='●') el.style.color = colors[Math.floor(Math.random()*colors.length)];
       el.style.left = Math.random()*100+'vw';
       el.style.top = '-20px';
       el.style.fontSize = (.8+Math.random()*1.2)+'rem';
-      el.style.animationDuration =
-        (2+Math.random()*3)+'s';
-
+      el.style.animationDuration = (2+Math.random()*3)+'s';
       document.body.appendChild(el);
-
       setTimeout(()=>el.remove(),5000);
     }, Math.random()*800);
   }
