@@ -514,12 +514,12 @@ document.querySelectorAll('.tl-item,.reason-card').forEach(el=>obs.observe(el));
 
 
 // ── LIVE COUNTER ──
-// เริ่มจาก 730 วัน แล้วนับต่อ
+// เริ่มที่ 730 วัน แล้วนับต่อ
 
 const START_DAYS = 730;
 const startTime = new Date();
 
-function updateCounter(){
+function updateCounter() {
   const now = new Date();
   const diff = now - startTime;
 
@@ -528,12 +528,10 @@ function updateCounter(){
   const mins = Math.floor((diff % 3600000) / 60000);
   const secs = Math.floor((diff % 60000) / 1000);
 
-  const totalDays = START_DAYS + extraDays;
-
-  document.getElementById('cDays').textContent = totalDays.toLocaleString();
-  document.getElementById('cHours').textContent = String(hours).padStart(2,'0');
-  document.getElementById('cMins').textContent = String(mins).padStart(2,'0');
-  document.getElementById('cSecs').textContent = String(secs).padStart(2,'0');
+  document.getElementById('cDays').textContent = START_DAYS + extraDays;
+  document.getElementById('cHours').textContent = String(hours).padStart(2, '0');
+  document.getElementById('cMins').textContent = String(mins).padStart(2, '0');
+  document.getElementById('cSecs').textContent = String(secs).padStart(2, '0');
 }
 
 updateCounter();
