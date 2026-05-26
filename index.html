@@ -512,23 +512,32 @@ const obs = new IntersectionObserver(entries=>{
 },{threshold:.15});
 document.querySelectorAll('.tl-item,.reason-card').forEach(el=>obs.observe(el));
 
+
 // ── LIVE COUNTER ──
-// แก้วันที่ตรงนี้ให้ตรงกับวันเริ่มคบกัน
-const START = new Date('2024-06-22T00:00:00');
+// เริ่มจาก 730 วัน แล้วนับต่อ
+
+const START_DAYS = 730;
+const startTime = new Date();
+
 function updateCounter(){
   const now = new Date();
-  const diff = now - START;
-  const days = Math.floor(diff/86400000);
-  const hours = Math.floor((diff%86400000)/3600000);
-  const mins = Math.floor((diff%3600000)/60000);
-  const secs = Math.floor((diff%60000)/1000);
-  document.getElementById('cDays').textContent = days.toLocaleString();
-  document.getElementById('cHours').textContent = String(hours).padStart(0,'0');
-  document.getElementById('cMins').textContent = String(mins).padStart(0,'0');
-  document.getElementById('cSecs').textContent = String(secs).padStart(0,'0');
+  const diff = now - startTime;
+
+  const extraDays = Math.floor(diff / 86400000);
+  const hours = Math.floor((diff % 86400000) / 3600000);
+  const mins = Math.floor((diff % 3600000) / 60000);
+  const secs = Math.floor((diff % 60000) / 1000);
+
+  const totalDays = START_DAYS + extraDays;
+
+  document.getElementById('cDays').textContent = totalDays.toLocaleString();
+  document.getElementById('cHours').textContent = String(hours).padStart(2,'0');
+  document.getElementById('cMins').textContent = String(mins).padStart(2,'0');
+  document.getElementById('cSecs').textContent = String(secs).padStart(2,'0');
 }
+
 updateCounter();
-setInterval(updateCounter,7300);
+setInterval(updateCounter, 1000);
 
 // ── CONFETTI BOOM ──
 function boom(){
