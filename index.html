@@ -513,20 +513,29 @@ const obs = new IntersectionObserver(entries=>{
 document.querySelectorAll('.tl-item,.reason-card').forEach(el=>obs.observe(el));
 
 // ── LIVE COUNTER ──
-// แก้วันที่ตรงนี้ให้ตรงกับวันเริ่มคบกัน
-const START = new Date('2023-05-26T00:00:00');
+// เริ่มที่ 730 วัน แล้วนับต่อเรื่อย ๆ
+const START_DAYS = 730;
+
+// เวลาที่เปิดเว็บ = จุดเริ่มนับ
+const pageStart = Date.now();
+
 function updateCounter(){
-  const now = new Date();
-  const diff = now - START;
-  const days = Math.floor(diff/86400000);
-  const hours = Math.floor((diff%86400000)/3600000);
-  const mins = Math.floor((diff%3600000)/60000);
-  const secs = Math.floor((diff%60000)/1000);
+  const elapsed = Date.now() - pageStart;
+
+  // รวมเวลาที่ผ่านไป + 730 วัน
+  const totalMs = (START_DAYS * 86400000) + elapsed;
+
+  const days = Math.floor(totalMs / 86400000);
+  const hours = Math.floor((totalMs % 86400000) / 3600000);
+  const mins = Math.floor((totalMs % 3600000) / 60000);
+  const secs = Math.floor((totalMs % 60000) / 1000);
+
   document.getElementById('cDays').textContent = days.toLocaleString();
   document.getElementById('cHours').textContent = String(hours).padStart(2,'0');
   document.getElementById('cMins').textContent = String(mins).padStart(2,'0');
   document.getElementById('cSecs').textContent = String(secs).padStart(2,'0');
 }
+
 updateCounter();
 setInterval(updateCounter,1000);
 
