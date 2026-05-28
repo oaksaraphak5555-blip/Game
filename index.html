@@ -17,7 +17,6 @@
   --text: #5c2a3a;
 }
 * { margin:0; padding:0; box-sizing:border-box; }
-
 body {
   background: var(--cream);
   font-family: 'Noto Sans Thai', sans-serif;
@@ -25,24 +24,17 @@ body {
   overflow-x: hidden;
   cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Ctext y='28' font-size='28'%3E🌸%3C/text%3E%3C/svg%3E") 16 16, auto;
 }
-
-/* ── FLOATING HEARTS BG ── */
-.hearts-bg {
-  position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
-}
+.hearts-bg { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
 .heart-float {
   position: absolute; bottom: -60px; font-size: 1.4rem;
-  animation: floatUp linear infinite;
-  opacity: 0;
+  animation: floatUp linear infinite; opacity: 0;
 }
 @keyframes floatUp {
-  0%   { transform: translateY(0) rotate(0deg) scale(1);   opacity: 0; }
+  0%   { transform: translateY(0) rotate(0deg) scale(1); opacity: 0; }
   10%  { opacity: .6; }
   90%  { opacity: .3; }
   100% { transform: translateY(-110vh) rotate(30deg) scale(.5); opacity: 0; }
 }
-
-/* ── ENVELOPE INTRO ── */
 #envelope-screen {
   position: fixed; inset: 0; z-index: 100;
   background: linear-gradient(135deg, #ffe0ec 0%, #ffd6e7 50%, #ffc8dd 100%);
@@ -51,7 +43,6 @@ body {
   transition: opacity .8s, transform .8s;
 }
 #envelope-screen.hidden { opacity: 0; transform: scale(1.05); pointer-events: none; }
-
 .envelope-wrap { position: relative; cursor: pointer; }
 .envelope {
   width: 180px; height: 130px; position: relative;
@@ -94,7 +85,6 @@ body {
   animation: pulse 1.5s ease-in-out infinite;
 }
 @keyframes pulse { 0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.15)} }
-
 .env-letter {
   position: absolute; bottom: 10px; left: 50%;
   transform: translateX(-50%);
@@ -108,33 +98,24 @@ body {
   z-index: 1;
 }
 .envelope-wrap.open .env-letter { transform: translateX(-50%) translateY(-60px); }
-
 .tap-hint {
-  margin-top: 1.5rem; font-size: .85rem; color: var(--rose);
+  margin-top: 1.5rem; color: var(--rose);
   animation: blink 2s infinite; font-family: 'Dancing Script', cursive; font-size: 1.1rem;
 }
 @keyframes blink { 0%,100%{opacity:1}50%{opacity:.4} }
-
-/* ── MAIN CONTENT ── */
 #main { position: relative; z-index: 1; opacity: 0; transition: opacity 1s; }
 #main.visible { opacity: 1; }
-
-/* HERO */
 .hero {
   min-height: 100vh;
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
-  padding: 2rem; text-align: center;
-  position: relative;
+  padding: 2rem; text-align: center; position: relative;
 }
-.hero-deco {
-  position: absolute; inset: 0; pointer-events: none; overflow: hidden;
-}
+.hero-deco { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
 .deco-circle {
   position: absolute; border-radius: 50%;
   background: radial-gradient(circle, rgba(255,107,157,.18), transparent 70%);
 }
-
 .badge {
   display: inline-flex; align-items: center; gap: .4rem;
   background: white; border: 2px solid var(--pink2);
@@ -145,7 +126,6 @@ body {
   animation: slideDown .8s .3s both;
 }
 @keyframes slideDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:none} }
-
 .hero-num {
   font-family: 'Playfair Display', serif;
   font-size: clamp(5rem, 22vw, 9rem);
@@ -157,7 +137,6 @@ body {
   filter: drop-shadow(0 4px 16px rgba(255,107,157,.3));
 }
 @keyframes scaleIn { from{opacity:0;transform:scale(.7)} to{opacity:1;transform:none} }
-
 .hero-unit {
   font-family: 'Dancing Script', cursive;
   font-size: clamp(2rem, 8vw, 3.2rem);
@@ -165,14 +144,12 @@ body {
   animation: slideUp .8s .6s both;
 }
 @keyframes slideUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
-
 .hero-sub {
   font-size: clamp(.95rem, 3vw, 1.15rem);
   color: rgba(92,42,58,.65); line-height: 1.8; max-width: 360px;
   animation: slideUp .8s .8s both;
 }
 .hero-sub strong { color: var(--rose); }
-
 .scroll-hint {
   position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
   font-size: .75rem; color: var(--pink2);
@@ -180,8 +157,6 @@ body {
   animation: bounce 2s infinite;
 }
 @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)} }
-
-/* ── SECTION BASE ── */
 section { padding: 4rem 1.5rem; max-width: 480px; margin: 0 auto; }
 .section-label {
   font-family: 'Dancing Script', cursive;
@@ -189,8 +164,6 @@ section { padding: 4rem 1.5rem; max-width: 480px; margin: 0 auto; }
   text-align: center; margin-bottom: 2rem;
   display: flex; align-items: center; justify-content: center; gap: .5rem;
 }
-
-/* ── TIMELINE ── */
 .timeline { position: relative; }
 .timeline::before {
   content: ''; position: absolute; left: 20px; top: 0; bottom: 0;
@@ -218,12 +191,7 @@ section { padding: 4rem 1.5rem; max-width: 480px; margin: 0 auto; }
 .tl-date { font-size: .7rem; color: var(--pink2); font-weight: 600; letter-spacing: .05em; margin-bottom: .3rem; }
 .tl-title { font-weight: 700; color: var(--text); margin-bottom: .3rem; font-size: .95rem; }
 .tl-desc { font-size: .82rem; color: rgba(92,42,58,.65); line-height: 1.6; }
-
-/* ── REASONS CARDS ── */
-.reasons-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: .8rem;
-}
+.reasons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
 .reason-card {
   background: white; border-radius: 16px; padding: 1.2rem;
   border: 1.5px solid var(--soft);
@@ -236,8 +204,6 @@ section { padding: 4rem 1.5rem; max-width: 480px; margin: 0 auto; }
 .reason-card:hover { box-shadow: 0 8px 28px rgba(255,107,157,.2); transform: translateY(-3px); }
 .reason-icon { font-size: 2rem; margin-bottom: .5rem; }
 .reason-text { font-size: .78rem; color: var(--text); line-height: 1.5; font-weight: 500; }
-
-/* ── LOVE LETTER ── */
 .letter-card {
   background: white; border-radius: 20px; padding: 2rem 1.8rem;
   border: 2px solid var(--soft); position: relative; overflow: hidden;
@@ -245,20 +211,14 @@ section { padding: 4rem 1.5rem; max-width: 480px; margin: 0 auto; }
 }
 .letter-card::before {
   content: '❝'; position: absolute; top: .5rem; left: 1rem;
-  font-size: 5rem; color: var(--soft); font-family: 'Playfair Display', serif;
-  line-height: 1;
+  font-size: 5rem; color: var(--soft); font-family: 'Playfair Display', serif; line-height: 1;
 }
-.letter-text {
-  font-size: .9rem; line-height: 2; color: var(--text);
-  position: relative; z-index: 1;
-}
+.letter-text { font-size: .9rem; line-height: 2; color: var(--text); position: relative; z-index: 1; }
 .letter-text em { color: var(--rose); font-style: normal; font-weight: 600; }
 .letter-sign {
   text-align: right; margin-top: 1.2rem;
   font-family: 'Dancing Script', cursive; font-size: 1.3rem; color: var(--pink);
 }
-
-/* ── COUNTER ── */
 .counter-section {
   background: linear-gradient(135deg, #fff0f5, #fce4f0);
   border-radius: 24px; padding: 2.5rem 2rem; text-align: center;
@@ -267,15 +227,12 @@ section { padding: 4rem 1.5rem; max-width: 480px; margin: 0 auto; }
 }
 .counter-title { font-size: .85rem; color: var(--pink); font-weight: 600; letter-spacing: .08em; margin-bottom: 1.5rem; }
 .counter-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: .5rem; }
-.counter-item { }
 .counter-num {
   font-family: 'Playfair Display', serif;
   font-size: clamp(1.6rem, 7vw, 2.4rem); font-weight: 700;
   color: var(--rose); line-height: 1;
 }
 .counter-label { font-size: .6rem; color: rgba(92,42,58,.5); margin-top: .2rem; letter-spacing: .05em; }
-
-/* ── FINAL ── */
 .final-section {
   text-align: center; padding: 5rem 2rem;
   background: linear-gradient(160deg, #fff0f5 0%, #fce4f0 100%);
@@ -288,8 +245,7 @@ section { padding: 4rem 1.5rem; max-width: 480px; margin: 0 auto; }
 .final-big {
   font-family: 'Playfair Display', serif;
   font-size: clamp(2.5rem, 10vw, 4rem); font-weight: 700; font-style: italic;
-  color: var(--rose); line-height: 1.2; margin-bottom: 1rem;
-  position: relative;
+  color: var(--rose); line-height: 1.2; margin-bottom: 1rem; position: relative;
 }
 .final-sub {
   font-size: clamp(.95rem, 3vw, 1.1rem);
@@ -302,58 +258,62 @@ section { padding: 4rem 1.5rem; max-width: 480px; margin: 0 auto; }
   font-family: 'Noto Sans Thai', sans-serif;
   cursor: pointer; box-shadow: 0 6px 24px rgba(255,107,157,.4);
   transition: transform .2s, box-shadow .2s;
+  position: relative; z-index: 1;
 }
 .confetti-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(255,107,157,.5); }
 .confetti-btn:active { transform: scale(.97); }
-
-/* ── CONFETTI ── */
 .confetti-piece {
-  position: fixed; top: -20px; pointer-events: none; z-index: 999;
+  position: fixed; top: -20px; pointer-events: none; z-index: 998;
   animation: confettiFall linear forwards;
 }
-@keyframes confettiFall {
-  to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
-}/* ── CELEBRATE STICKER ── */
-.sticker-popup{
+@keyframes confettiFall { to { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
+
+/* ── STICKER OVERLAY ── */
+#stickerOverlay {
   position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  font-size: 6rem;
+  inset: 0;
   z-index: 9999;
   pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* hidden by default */
+  opacity: 0;
+  visibility: hidden;
 }
-
-.sticker-popup.show{
-  animation: stickerPop 1.2s ease forwards;
+#stickerOverlay.show {
+  visibility: visible;
+  animation: overlayFade 2.4s ease forwards;
 }
-
-@keyframes stickerPop{
-  0%{
-    transform: translate(-50%, -50%) scale(0);
-    opacity: 0;
-  }
-  25%{
-    transform: translate(-50%, -50%) scale(1.2);
-    opacity: 1;
-  }
-  70%{
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
-  }
-  100%{
-    transform: translate(-50%, -50%) scale(.9);
-    opacity: 0;
-  }
+#stickerEmoji {
+  font-size: min(60vw, 60vh);
+  line-height: 1;
+  display: block;
+  transform: scale(0);
+}
+#stickerOverlay.show #stickerEmoji {
+  animation: stickerPop 2.4s cubic-bezier(.34,1.56,.64,1) forwards;
+}
+@keyframes overlayFade {
+  0%   { opacity: 0; }
+  20%  { opacity: 1; }
+  72%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes stickerPop {
+  0%   { transform: scale(0) rotate(-20deg); }
+  28%  { transform: scale(1.2) rotate(6deg); }
+  45%  { transform: scale(0.92) rotate(-3deg); }
+  58%  { transform: scale(1.06) rotate(1deg); }
+  70%  { transform: scale(1) rotate(0deg); }
+  100% { transform: scale(0.7) rotate(0deg); }
 }
 </style>
 </head>
 <body>
 
-<!-- FLOATING HEARTS -->
 <div class="hearts-bg" id="heartsBg"></div>
 
-<!-- ENVELOPE INTRO -->
 <div id="envelope-screen">
   <div class="envelope-wrap" id="envWrap" onclick="openEnvelope()">
     <div class="envelope">
@@ -369,10 +329,7 @@ section { padding: 4rem 1.5rem; max-width: 480px; margin: 0 auto; }
   <p class="tap-hint">🥬 แตะเพื่อเปิด 🥬</p>
 </div>
 
-<!-- MAIN CONTENT -->
 <div id="main">
-
-  <!-- HERO -->
   <div class="hero">
     <div class="hero-deco">
       <div class="deco-circle" style="width:300px;height:300px;top:-100px;right:-80px;"></div>
@@ -385,13 +342,9 @@ section { padding: 4rem 1.5rem; max-width: 480px; margin: 0 auto; }
       ทุกวันที่ผ่านมา ทุกเรื่องราว ทุกรอยยิ้ม<br>
       <strong>ล้วนมีความหมาย</strong> เพราะมีเธออยู่ด้วย 💕
     </p>
-    <div class="scroll-hint">
-      <span>เลื่อนลงดู</span>
-      <span>↓</span>
-    </div>
+    <div class="scroll-hint"><span>เลื่อนลงดู</span><span>↓</span></div>
   </div>
 
-  <!-- TIMELINE -->
   <section>
     <div class="section-label">📖 เรื่องราวของเรา</div>
     <div class="timeline">
@@ -422,64 +375,31 @@ section { padding: 4rem 1.5rem; max-width: 480px; margin: 0 auto; }
     </div>
   </section>
 
-  <!-- REASONS -->
   <section>
     <div class="section-label">💝 เหตุผลที่รักเธอ</div>
     <div class="reasons-grid">
-      <div class="reason-card">
-        <div class="reason-icon">😊</div>
-        <div class="reason-text">ไม่ท่รักด้วยใจล้วนไม่มีเหตุผล</div>
-      </div>
-      <div class="reason-card">
-        <div class="reason-icon">🤝</div>
-        <div class="reason-text">อยู่ข้างกันทั้งวันดีและวันแย่</div>
-      </div>
-      <div class="reason-card">
-        <div class="reason-icon">🌻</div>
-        <div class="reason-text">ทำให้นอยากเป็นคนที่ดีขึ้นทุกวัน</div>
-      </div>
-      <div class="reason-card">
-        <div class="reason-icon">🫂</div>
-        <div class="reason-text">รู้สึกปลอดภัยทุกครั้งที่อยู่กับเธอ</div>
-      </div>
-      <div class="reason-card">
-        <div class="reason-icon">✨</div>
-        <div class="reason-text">เธอทำให้ทุกอย่างธรรมดาดูพิเศษ</div>
-      </div>
-      <div class="reason-card">
-        <div class="reason-icon">💫</div>
-        <div class="reason-text">เลือกเธอใหม่ได้ทุกวันไม่มีเบื่อ</div>
-      </div>
+      <div class="reason-card"><div class="reason-icon">😊</div><div class="reason-text">ไม่ท่รักด้วยใจล้วนไม่มีเหตุผล</div></div>
+      <div class="reason-card"><div class="reason-icon">🤝</div><div class="reason-text">อยู่ข้างกันทั้งวันดีและวันแย่</div></div>
+      <div class="reason-card"><div class="reason-icon">🌻</div><div class="reason-text">ทำให้นอยากเป็นคนที่ดีขึ้นทุกวัน</div></div>
+      <div class="reason-card"><div class="reason-icon">🫂</div><div class="reason-text">รู้สึกปลอดภัยทุกครั้งที่อยู่กับเธอ</div></div>
+      <div class="reason-card"><div class="reason-icon">✨</div><div class="reason-text">เธอทำให้ทุกอย่างธรรมดาดูพิเศษ</div></div>
+      <div class="reason-card"><div class="reason-icon">💫</div><div class="reason-text">เลือกเธอใหม่ได้ทุกวันไม่มีเบื่อ</div></div>
     </div>
   </section>
 
-  <!-- COUNTER -->
   <section>
     <div class="section-label">⏱️ เวลาของเรา</div>
     <div class="counter-section">
       <div class="counter-title">เราอยู่ด้วยกันมาแล้ว...</div>
       <div class="counter-grid">
-        <div class="counter-item">
-          <div class="counter-num" id="cDays">730</div>
-          <div class="counter-label">วัน</div>
-        </div>
-        <div class="counter-item">
-          <div class="counter-num" id="cHours">--</div>
-          <div class="counter-label">ชั่วโมง</div>
-        </div>
-        <div class="counter-item">
-          <div class="counter-num" id="cMins">--</div>
-          <div class="counter-label">นาที</div>
-        </div>
-        <div class="counter-item">
-          <div class="counter-num" id="cSecs">--</div>
-          <div class="counter-label">วินาที</div>
-        </div>
+        <div class="counter-item"><div class="counter-num" id="cDays">730</div><div class="counter-label">วัน</div></div>
+        <div class="counter-item"><div class="counter-num" id="cHours">--</div><div class="counter-label">ชั่วโมง</div></div>
+        <div class="counter-item"><div class="counter-num" id="cMins">--</div><div class="counter-label">นาที</div></div>
+        <div class="counter-item"><div class="counter-num" id="cSecs">--</div><div class="counter-label">วินาที</div></div>
       </div>
     </div>
   </section>
 
-  <!-- LETTER -->
   <section>
     <div class="section-label">💌 จากใจฉัน</div>
     <div class="letter-card">
@@ -495,7 +415,6 @@ section { padding: 4rem 1.5rem; max-width: 480px; margin: 0 auto; }
     </div>
   </section>
 
-  <!-- FINAL -->
   <div class="final-section">
     <div class="final-big">Happy 2nd<br>Anniversary</div>
     <p class="final-sub">
@@ -505,11 +424,14 @@ section { padding: 4rem 1.5rem; max-width: 480px; margin: 0 auto; }
     </p>
     <button class="confetti-btn" onclick="boom()">🎉 กดฉลองด้วยกัน!</button>
   </div>
+</div>
 
-</div><!-- /main -->
+<!-- STICKER OVERLAY -->
+<div id="stickerOverlay">
+  <span id="stickerEmoji">🥬</span>
+</div>
 
 <script>
-// ── FLOATING HEARTS ──
 const emojis = ['💕','🥬','✨','💖','🥬','💗','🥬','🩷'];
 function spawnHeart(){
   const el = document.createElement('div');
@@ -524,125 +446,66 @@ function spawnHeart(){
 }
 setInterval(spawnHeart, 600);
 
-// ── ENVELOPE ──
 function openEnvelope(){
-  const wrap = document.getElementById('envWrap');
-  wrap.classList.add('open');
+  document.getElementById('envWrap').classList.add('open');
   setTimeout(()=>{
     document.getElementById('envelope-screen').classList.add('hidden');
     document.getElementById('main').classList.add('visible');
   }, 900);
 }
 
-// ── SCROLL REVEAL ──
 const obs = new IntersectionObserver(entries=>{
   entries.forEach((e,i)=>{
-    if(e.isIntersecting){
-      setTimeout(()=>e.target.classList.add('visible'), i*120);
-    }
+    if(e.isIntersecting) setTimeout(()=>e.target.classList.add('visible'), i*120);
   });
 },{threshold:.15});
 document.querySelectorAll('.tl-item,.reason-card').forEach(el=>obs.observe(el));
 
-// ── LIVE COUNTER ──
-// เริ่มที่ 730 วัน แล้วนับต่อเรื่อย ๆ
 const START_DAYS = 730;
-
-// เวลาที่เปิดเว็บ = จุดเริ่มนับ
 const pageStart = Date.now();
-
 function updateCounter(){
   const elapsed = Date.now() - pageStart;
-
-  // รวมเวลาที่ผ่านไป + 730 วัน
   const totalMs = (START_DAYS * 86400000) + elapsed;
-
-  const days = Math.floor(totalMs / 86400000);
-  const hours = Math.floor((totalMs % 86400000) / 3600000);
-  const mins = Math.floor((totalMs % 3600000) / 60000);
-  const secs = Math.floor((totalMs % 60000) / 1000);
-
-  document.getElementById('cDays').textContent = days.toLocaleString();
-  document.getElementById('cHours').textContent = String(hours).padStart(2,'0');
-  document.getElementById('cMins').textContent = String(mins).padStart(2,'0');
-  document.getElementById('cSecs').textContent = String(secs).padStart(2,'0');
+  document.getElementById('cDays').textContent = Math.floor(totalMs/86400000).toLocaleString();
+  document.getElementById('cHours').textContent = String(Math.floor((totalMs%86400000)/3600000)).padStart(2,'0');
+  document.getElementById('cMins').textContent = String(Math.floor((totalMs%3600000)/60000)).padStart(2,'0');
+  document.getElementById('cSecs').textContent = String(Math.floor((totalMs%60000)/1000)).padStart(2,'0');
 }
-
 updateCounter();
-setInterval(updateCounter,1000);
+setInterval(updateCounter, 1000);
 
 function boom(){
+  // confetti
   const colors=['#ff6b9d','#ff9ec4','#c77dff','#ffb5a7','#ffdd44','#ff4d6d','#c9184a'];
   const shapes=['💕','🥬','🤍','🎊','💖','✨'];
-
-  // confetti เดิม
   for(let i=0;i<80;i++){
     setTimeout(()=>{
       const el = document.createElement('div');
       el.className = 'confetti-piece';
-
-      el.textContent =
-        Math.random()>.5
-        ? shapes[Math.floor(Math.random()*shapes.length)]
-        : '●';
-
-      if(el.textContent==='●'){
-        el.style.color =
-          colors[Math.floor(Math.random()*colors.length)];
-      }
-
+      el.textContent = Math.random()>.5 ? shapes[Math.floor(Math.random()*shapes.length)] : '●';
+      if(el.textContent==='●') el.style.color = colors[Math.floor(Math.random()*colors.length)];
       el.style.left = Math.random()*100+'vw';
-      el.style.top = '-20px';
       el.style.fontSize = (.8+Math.random()*1.2)+'rem';
       el.style.animationDuration = (2+Math.random()*3)+'s';
-
       document.body.appendChild(el);
-      setTimeout(()=>el.remove(),5000);
+      setTimeout(()=>el.remove(), 5000);
     }, Math.random()*800);
   }
 
-  // ===== STICKER เด้งขึ้น =====
-  const sticker = document.getElementById('stickerPopup');
+  // sticker ใหญ่กลางจอ — reset แล้ว play
+  const overlay = document.getElementById('stickerOverlay');
+  const emoji   = document.getElementById('stickerEmoji');
 
-  // รี animation ทุกครั้ง
-  sticker.classList.remove('show');
-  void sticker.offsetWidth;
+  overlay.classList.remove('show');
+  emoji.style.animation = 'none';
+  // force reflow
+  void overlay.offsetWidth;
 
-  sticker.classList.add('show');
+  emoji.style.animation = '';
+  overlay.classList.add('show');
 
-  // ===== แตกตัวเล็ก =====
-  setTimeout(()=>{
-    for(let i=0;i<20;i++){
-      const mini = document.createElement('div');
-
-      mini.textContent = ['💕','🥬','💖','✨'][
-        Math.floor(Math.random()*4)
-      ];
-
-      mini.style.position = 'fixed';
-      mini.style.left = '50%';
-      mini.style.top = '50%';
-      mini.style.zIndex = '9999';
-      mini.style.fontSize = '2rem';
-      mini.style.pointerEvents = 'none';
-      mini.style.transition = '1s ease';
-
-      document.body.appendChild(mini);
-
-      const x = (Math.random()-0.5)*400;
-      const y = (Math.random()-0.5)*400;
-
-      requestAnimationFrame(()=>{
-        mini.style.transform =
-          `translate(${x}px, ${y}px) scale(.3)`;
-        mini.style.opacity = '0';
-      });
-
-      setTimeout(()=>mini.remove(),1000);
-    }
-  },500);
+  setTimeout(()=> overlay.classList.remove('show'), 2400);
 }
 </script>
-  <div id="stickerPopup" class="sticker-popup">🥬💖</div>
 </body>
 </html>
